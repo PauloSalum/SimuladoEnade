@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - simuladoenade@mysqldb.cxssnzntsq9f.us-west-2.rds.amazonaws.com" uuid="5fb11dfc-9615-4a1d-82b0-62f27117099e">
+    <database-info product="MySQL" version="5.6.22-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="simuladoenade"/>
+    <table name="aluno" schema="" catalog="simuladoenade" type="TABLE">
+      <column name="matricula" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_5jico8r03sk0intnng9tarvv9" columns="id" ref-table="user" ref-schema="" ref-catalog="simuladoenade" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_g7uv9vn10mdbv0255bqyts7x2" table="resultados" schema="" catalog="simuladoenade" columns="aluno_id"/>
+    </table>
+    <table name="coordenador" schema="" catalog="simuladoenade" type="TABLE">
+      <column name="curso" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_pde71hk0hutgabagvvl6c3pfg" columns="id" ref-table="user" ref-schema="" ref-catalog="simuladoenade" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="pergunta" schema="" catalog="simuladoenade" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="pergunta" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="questionario_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_874f8r5oldkcy3y55hro4v9qa" columns="questionario_id" ref-table="questionario" ref-schema="" ref-catalog="simuladoenade" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_jqt9lsfeng447vrxrfg53w3nv" table="resposta" schema="" catalog="simuladoenade" columns="pergunta_id"/>
+      <index name="FK_874f8r5oldkcy3y55hro4v9qa" unique="false" columns="questionario_id"/>
+    </table>
+    <table name="professor" schema="" catalog="simuladoenade" type="TABLE">
+      <column name="curso" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="materia" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_mw7fqu259ujbc08jyrlecjrm4" columns="id" ref-table="user" ref-schema="" ref-catalog="simuladoenade" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="questionario" schema="" catalog="simuladoenade" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="nome" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_874f8r5oldkcy3y55hro4v9qa" table="pergunta" schema="" catalog="simuladoenade" columns="questionario_id"/>
+      <index name="UK_rj0bqcb65c09wdj0yn5v94kkt" unique="true" columns="nome"/>
+    </table>
+    <table name="resposta" schema="" catalog="simuladoenade" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="correta" sqlType="BIT" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="resposta" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pergunta_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_jqt9lsfeng447vrxrfg53w3nv" columns="pergunta_id" ref-table="pergunta" ref-schema="" ref-catalog="simuladoenade" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_jqt9lsfeng447vrxrfg53w3nv" unique="false" columns="pergunta_id"/>
+    </table>
+    <table name="resultados" schema="" catalog="simuladoenade" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="data" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pontuacao" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="aluno_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_g7uv9vn10mdbv0255bqyts7x2" columns="aluno_id" ref-table="aluno" ref-schema="" ref-catalog="simuladoenade" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_g7uv9vn10mdbv0255bqyts7x2" unique="false" columns="aluno_id"/>
+    </table>
+    <table name="user" schema="" catalog="simuladoenade" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="cpf" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="data_nascimento" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nome" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="senha" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sexo" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_5jico8r03sk0intnng9tarvv9" table="aluno" schema="" catalog="simuladoenade" columns="id"/>
+      <exported-key name="FK_pde71hk0hutgabagvvl6c3pfg" table="coordenador" schema="" catalog="simuladoenade" columns="id"/>
+      <exported-key name="FK_mw7fqu259ujbc08jyrlecjrm4" table="professor" schema="" catalog="simuladoenade" columns="id"/>
+      <index name="UK_mlc38vvtx4vwuxelt6dhvq3kx" unique="true" columns="email,cpf"/>
+    </table>
+  </data-source>
+  <data-source name="H2 - MarlinAlarme" uuid="8b295383-6e39-4f2a-adcf-3b754cea1199">
+    <database-info product="H2" version="1.3.176 (2014-04-05)" jdbc-version="4.0" driver-name="H2 JDBC Driver" driver-version="1.3.176 (2014-04-05)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
+    <schema name="PUBLIC" catalog="MARLINALARME"/>
+  </data-source>
+</component>

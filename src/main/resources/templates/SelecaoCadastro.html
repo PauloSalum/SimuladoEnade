@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br" xml:lang="pt-br">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Simulado Enade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+    <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+    <!--script src="js/less-1.3.3.min.js"></script-->
+    <!--append â€˜#!watchâ€™ to the browser URL, then refresh the page. -->
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]-->
+    <script src="../../js/html5shiv.js" th:src="@{/js/html5shiv.js}"></script>
+    <!--[endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../static/img/apple-touch-icon-144-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../static/img/apple-touch-icon-114-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../static/img/apple-touch-icon-72-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" href="../static/img/apple-touch-icon-57-precomposed.png"/>
+    <link rel="shortcut icon" href="../static/img/favicon.png"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+
+    <script src="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
+
+    <script src="../../js/scripts.js" th:src="@{/js/scripts.js}"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    Simulado Enade: <span
+                        style="font-size: 23.3999996185303px; line-height: 23.3999996185303px;color:#A9A9A9">Seleção de Cadastro</span>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <div class="col-md-4 column">
+        </div>
+        <div class="col-md-4 column">
+            <form action="#" th:action="@{/cadastraAluno}" method="get" class="form-horizontal">
+                <div class="form-group">
+
+                    <button type="submit" class="btn btn-block btn-primary">Aluno</button>
+
+                </div>
+            </form>
+
+
+            <form action="#" th:action="@{/cadastraProfessor}" method="get" class="form-horizontal">
+
+                <div class="form-group">
+
+                    <button type="submit" class="btn btn-default btn-block ">Professor</button>
+
+                </div>
+            </form>
+
+
+            <form action="#" th:action="@{/cadastraCoordenador}" method="get" class="form-horizontal">
+                <div class="form-group">
+
+                    <button type="submit" class="btn btn-default btn-block ">Coordenador</button>
+
+                </div>
+
+            </form>
+
+
+            <form action="#" th:action="@{/}" method="get" class="form-horizontal">
+                <div class="form-group">
+
+                    <button type="submit" class="btn btn-danger btn-block ">Voltar</button>
+
+                </div>
+            </form>
+            <div class="col-md-4 column">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

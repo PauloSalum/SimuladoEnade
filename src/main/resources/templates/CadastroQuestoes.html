@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br" xml:lang="pt-br">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Simulado Enade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+    <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+    <!--script src="js/less-1.3.3.min.js"></script-->
+    <!--append â€˜#!watchâ€™ to the browser URL, then refresh the page. -->
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]-->
+    <script src="../../js/html5shiv.js" th:src="@{/js/html5shiv.js}"></script>
+    <!--[endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../static/img/apple-touch-icon-144-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../static/img/apple-touch-icon-114-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../static/img/apple-touch-icon-72-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" href="../static/img/apple-touch-icon-57-precomposed.png"/>
+    <link rel="shortcut icon" href="../static/img/favicon.png"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+
+    <script src="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
+
+    <script src="../../js/scripts.js" th:src="@{/js/scripts.js}"></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-10 column">
+            <div class="page-header">
+                <h1>
+                    Simulado Enade: <span
+                        style="font-size: 23.3999996185303px; line-height: 23.3999996185303px;color:#A9A9A9" th:text="|Questionario:  ${#httpSession.getAttribute('questionario').getNome()}|">Questionario: nome</span>
+                </h1>
+            </div>
+
+        </div>
+        <div class="col-md-2 column">
+            <p th:text="${'Usuario: '+#httpSession.getAttribute('user').getEmail()}">
+                Logado como:
+            </p> <a href="/">Logout</a>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-7 column">
+            <h3>
+                Cadastro de questões
+            </h3>
+
+            <form th:action="@{/cadastrarPerguntas}" method="get" role="form">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Questao:</label>
+                    <input type="text" class="form-control" id="textareaQuestao"
+                           placeholder="Entre com a pergunta" name="pergunta" required="required"/>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Resposta A</label>
+                    <input type="text" class="form-control" id="textareaRespostaA"
+                           placeholder="Entre com a resposta" name="1" required="required"/>
+                    <label>
+                        <input type="radio"
+                               name="Resposta"
+                               th:value="1" required="required"/>
+                        Resposta
+                        certa</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Resposta B</label>
+                    <input type="text" class="form-control" id="textareaRespostaB"
+                           placeholder="Entre com a resposta" name="2" required="required"/>
+                    <label>
+                        <input type="radio"
+                               name="Resposta"
+                               th:value="2" required="required"/>
+                        Resposta
+                        certa
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Resposta C</label>
+                    <input type="text" class="form-control" id="textareaRespostaC"
+                           placeholder="Entre com a resposta" name="3" required="required"/>
+                    <label><input type="radio"
+                                  name="Resposta"
+                                  th:value="3" required="required"/>
+                        Resposta
+                        certa</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Resposta D</label>
+                    <input type="text" class="form-control" id="textareaRespostaD"
+                           placeholder="Entre com a resposta" name="4" required="required"/>
+                    <label>
+                        <input type="radio"
+                               name="Resposta"
+                               th:value="4" required="required"/>
+                        Resposta
+                        certa</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Resposta E</label>
+                    <input type="text" class="form-control" id="textareaRespostaE"
+                           placeholder="Entre com a resposta" name="5" required="required"/>
+                    <label>
+                        <input type="radio"
+                               name="Resposta"
+                               th:value="5" required="required"/>
+                        Resposta
+                        certa</label>
+                </div>
+
+                <input type="hidden" name="questionarioid" th:value="${#httpSession.getAttribute('questionario').getId()}"/>
+
+                <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Enviar Questão</button>
+
+                </div>
+
+            </form>
+            <form th:action="@{/opcaoPergunta}" method="get" role="form">
+                <div class="form-group">
+
+                        <button type="submit" class="btn btn-default" name="nq">Voltar</button>
+
+                </div>
+            </form>
+        </div>
+        <div class="col-md-5 column">
+            <table class="table table-condensed table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        Pergunta
+                    </th>
+                    <th>
+                        Deletar
+                    </th>
+                </tr>
+                </thead>
+                <tbody th:each="Pergunta,rowStat : ${#httpSession.getAttribute('perguntas')}">
+                <tr>
+                    <td th:text="|Pergunta numero:${rowStat.count}|">
+                        #
+                    </td>
+                    <td th:text="${Pergunta.getPergunta()}">
+
+                    </td>
+                    <td>
+                        <form th:action="@{/deletarPergunta}" method="get" role="form">
+                            <input type="hidden" th:value="${#httpSession.getAttribute('questionario').getId()}" name = "questionarioid"/>
+                            <input type="hidden" th:value="${Pergunta.getId()}" name = "perguntaid"/>
+                            <button type="submit" class="btn btn-danger" >Deletar</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
