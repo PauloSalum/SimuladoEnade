@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br" xml:lang="pt-br">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Simulado Enade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+    <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+    <!--script src="js/less-1.3.3.min.js"></script-->
+    <!--append â€˜#!watchâ€™ to the browser URL, then refresh the page. -->
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]-->
+    <script src="../../js/html5shiv.js" th:src="@{/js/html5shiv.js}"></script>
+    <!--[endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../static/img/apple-touch-icon-144-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../static/img/apple-touch-icon-114-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../static/img/apple-touch-icon-72-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" href="../static/img/apple-touch-icon-57-precomposed.png"/>
+    <link rel="shortcut icon" href="../static/img/favicon.png"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+
+    <script src="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
+
+    <script src="../../js/scripts.js" th:src="@{/js/scripts.js}"></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h3 class="text-left">
+                Simulado Enade
+            </h3>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-4 column">
+            <h3>
+                Login
+            </h3>
+
+
+            <form action="#" th:action="@{/}" th:object="${login}" method="post" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Email: </label>
+
+                    <div class="col-sm-10">
+                        <input type="email" th:field="*{email}" name="email" class="form-control" id="inputEmail3"
+                               required="required"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Senha: </label>
+
+                    <div class="col-sm-10">
+
+                        <input type="password" th:field="*{senha}" name="senha" class="form-control"
+                               id="inputPassword3"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <select class="form-control" id="sel1" th:field="*{tipo}" name="tipo">
+                            <option value="aluno">Sou um aluno</option>
+                            <option value="professor">Sou um professor</option>
+                            <option value="coordenador">Sou um coordenador</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Entrar</button>
+                    </div>
+                </div>
+            </form>
+            <form action="#" th:action="@{/selecaoCadastro}" method="get" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Cadastre-se</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8 column">
+            <h3>
+                Ranking do Simulado Enade
+            </h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        Nome
+                    </th>
+                    <th>
+                        Data da realização do simulado
+                    </th>
+                    <th>
+                        Pontuação
+                    </th>
+                </tr>
+                </thead>
+                <tbody th:each="resultado,rowStat : ${#httpSession.getAttribute('resultados')}">
+                <tr th:class="${rowStat.first}? success : active" class="success">
+                    <td th:text="${rowStat.count}">
+
+                    </td>
+                    <td th:text="${resultado.getAluno().getNome()}">
+
+                    </td>
+                    <td th:text="${resultado.getData()}">
+
+                    </td>
+                    <td th:text="${resultado.getPontuacao()}">
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+
+
+</html>
